@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DSA Roadmap for Placements</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #87dbb5;
+        color: #2d2d2d;
+      }
+
+      header {
+        background: linear-gradient(135deg, #874ac4 0%, #6a359c 100%);
+        color: white;
+        padding: 25px 10px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      header a img {
+        position: absolute;
+        left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        border: 4px solid white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      header a img:hover {
+        transform: translateY(-50%) scale(1.1) rotate(5deg);
+        border-color: #87dbb5;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      header h1 {
+        margin-left: 120px;
+        font-size: 2.8rem;
+        letter-spacing: 1.5px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        background: linear-gradient(to right, #f5f0f4, #e8e4e7);
+        overflow: hidden;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      nav a {
+        color: #111;
+        text-align: center;
+        padding: 16px 32px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        flex: 1;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: #874ac4;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      nav a:hover {
+        background-color: rgba(135, 74, 196, 0.1);
+        color: #874ac4;
+      }
+
+      nav a:hover::after {
+        width: 80%;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 30px;
+        background-color: #f2f2f2;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+      }
+
+      .section {
+        margin-bottom: 50px;
+        padding: 20px;
+        border-radius: 10px;
+        background: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .section h2 {
+        color: #69c66c;
+        font-size: 2.2rem;
+        border-bottom: 3px solid #a2aba0;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      /* Topics Section Styling */
+      .flashcards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        padding: 20px 0;
+      }
+
+      .flashcard {
+        background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        padding: 25px;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .flashcard::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #4caf50, #45a049);
+      }
+
+      .flashcard:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .flashcard h3 {
+        color: #4caf50;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .flashcard ul li {
+        background: rgba(76, 175, 80, 0.1);
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #4caf50;
+        color: #fff;
+        transition: all 0.3s ease;
+      }
+
+      .flashcard ul li:hover {
+        transform: translateX(10px);
+        background: rgba(76, 175, 80, 0.2);
+      }
+
+      /* Resources Section Styling */
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 20px 0;
+      }
+
+      .resource-card {
+        background: linear-gradient(145deg, #2c3e50, #34495e);
+        border-radius: 15px;
+        padding: 25px;
+        transition: all 0.4s ease;
+        position: relative;
+        color: white;
+      }
+
+      .resource-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #3498db, #2980b9);
+      }
+
+      .resource-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .resource-card h3 {
+        color: #3498db;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .resource-card p {
+        color: #ecf0f1;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .resource-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+      }
+
+      .resource-btn:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+      }
+
+      /* Practice Section Styling */
+      .practice-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        padding: 20px 0;
+      }
+
+      .practice-card {
+        background: linear-gradient(145deg, #2c3e50, #34495e);
+        border-radius: 15px;
+        padding: 25px;
+        transition: all 0.4s ease;
+        position: relative;
+        text-align: center;
+        color: white;
+      }
+
+      .practice-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #e74c3c, #c0392b);
+      }
+
+      .practice-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .practice-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background: #e74c3c;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .practice-btn:hover {
+        background: #c0392b;
+        transform: translateY(-2px);
+      }
+
+      /* Striver Sheet Section Styling */
+      .striver-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        padding: 20px 0;
+      }
+
+      .striver-card {
+        background: linear-gradient(145deg, #6c5ce7, #a55eea);
+        border-radius: 15px;
+        padding: 30px;
+        transition: all 0.4s ease;
+        position: relative;
+        color: white;
+        text-align: center;
+      }
+
+      .striver-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #fd79a8, #e84393);
+      }
+
+      .striver-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(108, 92, 231, 0.3);
+      }
+
+      .striver-stats {
+        display: flex;
+        justify-content: space-around;
+        margin: 25px 0;
+        font-size: 1.1rem;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #ffeaa7;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .striver-btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: #fd79a8;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .striver-btn:hover {
+        background: #e84393;
+        transform: translateY(-2px);
+      }
+
+      footer {
+        text-align: center;
+        padding: 25px 10px;
+        background: linear-gradient(to right, #2d3436, #2c3e50);
+        color: #fff;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding-top: 120px;
+        }
+
+        header a img {
+          left: 50%;
+          top: 20px;
+          transform: translateX(-50%);
+        }
+
+        header a img:hover {
+          transform: translateX(-50%) scale(1.1);
+        }
+
+        header h1 {
+          margin-left: 0;
+          font-size: 2.2rem;
+        }
+
+        .flashcards-container,
+        .resources-grid,
+        .practice-grid,
+        .striver-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          padding: 15px;
+          margin: 15px;
+        }
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 20px 0;
+      }
+
+      <!-- Add these styles in your <style > tag -- > <style > .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 20px 0;
+      }
+
+      .contact-card {
+        background: linear-gradient(145deg, #3db480, #5dd2e4);
+        border-radius: 15px;
+        padding: 30px;
+        color: rgb(12, 12, 12);
+        text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 176, 155, 0.3);
+      }
+
+      .contact-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: rgba(9, 7, 7, 0.9);
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        color: rgb(98, 54, 54);
+        transition: all 0.3s ease;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        background: rgba(255, 255, 255, 0.2);
+        outline: none;
+      }
+
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .contact-btn {
+        background: rgb(251, 250, 250);
+        color: #00b09b;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 15px;
+        width: 100%;
+      }
+
+      .contact-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-link {
+        background: rgba(255, 255, 255, 0.1);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        background: white;
+        color: #00b09b;
+        transform: translateY(-3px);
+      }
+      .social-link {
+        background: rgba(255, 255, 255, 0.1);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        margin: 0 5px;
+      }
+
+      .social-link:hover {
+        background: white;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .social-link img {
+        transition: transform 0.3s ease;
+      }
+
+      .social-link:hover img {
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#">
+        <img src="./assert/Codegai.png" alt="CodeGAi Logo" />
+      </a>
+      <h1>DSA Roadmap for Placements by CodeGAi</h1>
+    </header>
+
+    <nav>
+      <a href="#introduction">Introduction</a>
+      <a href="#resources">Resources</a>
+      <a href="#topics">Topics</a>
+      <a href="#practice">Practice</a>
+      <a href="#striver-sheet">Resources</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+      <section id="introduction" class="section">
+        <h2>Introduction</h2>
+        <div class="intro-content" style="line-height: 1.8; font-size: 1.1rem">
+          <p>
+            <strong
+              >Welcome to the DSA Roadmap for Placements by CodeGAi!</strong
+            >
+          </p>
+
+          <p>
+            This comprehensive guide is designed to help you master Data
+            Structures and Algorithms (DSA) effectively. Our structured approach
+            includes:
+          </p>
+
+          <div
+            class="intro-features"
+            style="
+              background: #f8f9fa;
+              padding: 20px;
+              border-radius: 10px;
+              margin: 20px 0;
+            "
+          >
+            <ul style="list-style-type: none; padding: 0">
+              <li
+                style="margin: 15px 0; padding-left: 30px; position: relative"
+              >
+                <span style="color: #4caf50; position: absolute; left: 0"
+                  >✓</span
+                >
+                <strong>30-Day Structured Learning Plan:</strong> Carefully
+                organized topics from basic to advanced
+              </li>
+              <li
+                style="margin: 15px 0; padding-left: 30px; position: relative"
+              >
+                <span style="color: #4caf50; position: absolute; left: 0"
+                  >✓</span
+                >
+                <strong>Curated Resources:</strong> Hand-picked tutorials,
+                videos, and practice materials
+              </li>
+              <li
+                style="margin: 15px 0; padding-left: 30px; position: relative"
+              >
+                <span style="color: #4caf50; position: absolute; left: 0"
+                  >✓</span
+                >
+                <strong>Practice Problems:</strong> Selected problems from top
+                platforms with difficulty progression
+              </li>
+              <li
+                style="margin: 15px 0; padding-left: 30px; position: relative"
+              >
+                <span style="color: #4caf50; position: absolute; left: 0"
+                  >✓</span
+                >
+                <strong>Interview Focus:</strong> Topics frequently asked in top
+                tech company interviews
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="intro-note"
+            style="
+              background: linear-gradient(145deg, #874ac4, #6a359c);
+              color: white;
+              padding: 20px;
+              border-radius: 10px;
+              margin-top: 20px;
+            "
+          >
+            <h3 style="color: #ffd700; margin-bottom: 15px">
+              Why This Roadmap?
+            </h3>
+            <p style="margin-bottom: 10px">
+              ✨ <strong>Structured Learning:</strong> Follow a day-by-day plan
+              designed for optimal progress
+            </p>
+            <p style="margin-bottom: 10px">
+              ✨ <strong>Comprehensive Coverage:</strong> All essential DSA
+              topics covered systematically
+            </p>
+            <p style="margin-bottom: 10px">
+              ✨ <strong>Practice-Oriented:</strong> Focus on problem-solving
+              with real interview questions
+            </p>
+            <p style="margin-bottom: 10px">
+              ✨ <strong>Time-Efficient:</strong> Optimized for preparation
+              within 30-45 days
+            </p>
+          </div>
+
+          <div class="intro-start" style="text-align: center; margin-top: 30px">
+            <p style="font-size: 1.2rem; color: #333; margin-bottom: 20px">
+              Ready to start your DSA journey? Navigate through the sections
+              below!
+            </p>
+            <div
+              class="intro-navigation"
+              style="
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                flex-wrap: wrap;
+              "
+            >
+              <a
+                href="#resources"
+                style="
+                  background: #4caf50;
+                  color: white;
+                  padding: 10px 20px;
+                  border-radius: 25px;
+                  text-decoration: none;
+                  transition: all 0.3s ease;
+                "
+                >Start with Resources</a
+              >
+              <a
+                href="#topics"
+                style="
+                  background: #874ac4;
+                  color: white;
+                  padding: 10px 20px;
+                  border-radius: 25px;
+                  text-decoration: none;
+                  transition: all 0.3s ease;
+                "
+                >View Topics</a
+              >
+              <a
+                href="#practice"
+                style="
+                  background: #e74c3c;
+                  color: white;
+                  padding: 10px 20px;
+                  border-radius: 25px;
+                  text-decoration: none;
+                  transition: all 0.3s ease;
+                "
+                >Practice Problems</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resources" class="section">
+        <h2>Recommended Resources</h2>
+        <div class="resources-grid">
+          <div class="resource-card">
+            <h3>GeeksforGeeks</h3>
+            <p>Comprehensive tutorials and problem sets for DSA learning.</p>
+            <a
+              href="https://www.geeksforgeeks.org"
+              target="_blank"
+              class="resource-btn"
+              >Access GeeksforGeeks</a
+            >
+          </div>
+
+          <div class="resource-card">
+            <h3>LeetCode</h3>
+            <p>
+              Premier platform for coding interview preparation with vast
+              problem sets.
+            </p>
+            <a href="https://leetcode.com" target="_blank" class="resource-btn"
+              >Start LeetCode</a
+            >
+          </div>
+
+          <div class="resource-card">
+            <h3>HackerRank</h3>
+            <p>
+              Excellent platform for placement preparation and coding
+              challenges.
+            </p>
+            <a
+              href="https://www.hackerrank.com"
+              target="_blank"
+              class="resource-btn"
+              >Join HackerRank</a
+            >
+          </div>
+
+          <div class="resource-card">
+            <h3>Fork Java (GfG)</h3>
+            <p>Structured Java-based DSA course with detailed explanations.</p>
+            <a
+              href="https://practice.geeksforgeeks.org/courses/fork-java"
+              target="_blank"
+              class="resource-btn"
+              >Enroll Now</a
+            >
+          </div>
+
+          <div class="resource-card">
+            <h3>MyCodeSchool</h3>
+            <p>
+              Visual explanations of DSA concepts through detailed video
+              tutorials.
+            </p>
+            <a
+              href="https://www.youtube.com/user/mycodeschool"
+              target="_blank"
+              class="resource-btn"
+              >Watch Videos</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="topics" class="section">
+        <h2>Essential Topics</h2>
+        <div class="flashcards-container">
+          <div class="flashcard">
+            <h3>Basic Programming</h3>
+            <ul>
+              <li>Time & Space Complexity</li>
+              <li>Arrays & String Manipulation</li>
+              <li>Basic Mathematics</li>
+              <li>Bit Manipulation</li>
+              <li>Recursion Fundamentals</li>
+            </ul>
+          </div>
+
+          <div class="flashcard">
+            <h3>Core Data Structures</h3>
+            <ul>
+              <li>Linked Lists (Singly & Doubly)</li>
+              <li>Stacks & Queues</li>
+              <li>Hash Tables & Maps</li>
+              <li>Trees (Binary & BST)</li>
+              <li>Heaps & Priority Queues</li>
+            </ul>
+          </div>
+
+          <div class="flashcard">
+            <h3>Advanced Data Structures</h3>
+            <ul>
+              <li>Graphs & Graph Algorithms</li>
+              <li>Trie & Its Applications</li>
+              <li>Segment Trees</li>
+              <li>Disjoint Sets (Union Find)</li>
+              <li>Advanced Trees (AVL, Red-Black)</li>
+            </ul>
+          </div>
+
+          <div class="flashcard">
+            <h3>Searching & Sorting</h3>
+            <ul>
+              <li>Binary Search & Variants</li>
+              <li>Merge Sort & Quick Sort</li>
+              <li>Counting Sort & Radix Sort</li>
+              <li>Two Pointer Technique</li>
+              <li>Modified Binary Search</li>
+            </ul>
+          </div>
+
+          <div class="flashcard">
+            <h3>Dynamic Programming</h3>
+            <ul>
+              <li>1D & 2D DP Problems</li>
+              <li>Knapsack Variations</li>
+              <li>LCS & Edit Distance</li>
+              <li>Matrix Chain Multiplication</li>
+              <li>Tree & Graph DP</li>
+            </ul>
+          </div>
+
+          <div class="flashcard">
+            <h3>Advanced Algorithms</h3>
+            <ul>
+              <li>Greedy Algorithms</li>
+              <li>Backtracking</li>
+              <li>Shortest Path Algorithms</li>
+              <li>Minimum Spanning Trees</li>
+              <li>String Algorithms (KMP, Rabin-Karp)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="practice" class="section">
+        <h2>Practice Problems</h2>
+        <div class="practice-grid">
+          <div class="practice-card">
+            <h3>LeetCode Problems</h3>
+            <p>
+              Master algorithmic problems with LeetCode's extensive collection
+              of coding challenges.
+            </p>
+            <a
+              href="https://leetcode.com/problemset/all/"
+              target="_blank"
+              class="practice-btn"
+              >Solve Problems</a
+            >
+          </div>
+
+          <div class="practice-card">
+            <h3>HackerRank Problems</h3>
+            <p>
+              Enhance your problem-solving skills with HackerRank's diverse set
+              of challenges.
+            </p>
+            <a
+              href="https://www.hackerrank.com/domains/tutorials/10-days-of-statistics"
+              target="_blank"
+              class="practice-btn"
+              >Start Practice</a
+            >
+          </div>
+
+          <div class="practice-card">
+            <h3>GeeksforGeeks Problems</h3>
+            <p>
+              Access comprehensive DSA problems with detailed explanations and
+              solutions.
+            </p>
+            <a
+              href="https://practice.geeksforgeeks.org/problems/"
+              target="_blank"
+              class="practice-btn"
+              >Practice DSA</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="striver-sheet" class="section">
+        <h2>Interview Preparation Resources</h2>
+        
+
+          <div class="striver-card">
+            <h3>Blind 75 Questions</h3>
+            <p>Essential coding problems recommended by tech professionals</p>
+
+            <div class="feature-list">
+              <h4 style="color: #ffd700; margin: 20px 0 15px">
+                Topic Coverage:
+              </h4>
+              <ul style="text-align: left; list-style: none; padding: 0">
+                <li>🔹 Arrays & Strings</li>
+                <li>🔹 Dynamic Programming</li>
+                <li>🔹 Tree & Graph</li>
+                <li>🔹 System Design</li>
+              </ul>
+            </div>
+
+            <a
+              href="https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions"
+              target="_blank"
+              class="striver-btn"
+              >View Blind 75</a
+            >
+          </div>
+
+          <div class="striver-card">
+            <h3>Interview Guides</h3>
+            <p>Comprehensive resources for technical interviews</p>
+
+            <div
+              class="resources-list"
+              style="text-align: left; padding: 15px 0"
+            >
+              <a
+                href="https://github.com/yangshun/tech-interview-handbook"
+                target="_blank"
+                style="
+                  color: #fff;
+                  text-decoration: none;
+                  display: block;
+                  margin: 10px 0;
+                "
+              >
+                📚 Tech Interview Handbook
+              </a>
+              <a
+                href="https://www.techinterviewhandbook.org/grind75"
+                target="_blank"
+                style="
+                  color: #fff;
+                  text-decoration: none;
+                  display: block;
+                  margin: 10px 0;
+                "
+              >
+                💪 Grind 75 Questions
+              </a>
+              <a
+                href="https://www.geeksforgeeks.org/must-do-coding-questions-for-companies-like-amazon-microsoft-adobe/"
+                target="_blank"
+                style="
+                  color: #fff;
+                  text-decoration: none;
+                  display: block;
+                  margin: 10px 0;
+                "
+              >
+                🎯 Company-specific Questions
+              </a>
+            </div>
+
+            <div class="company-tags" style="margin: 20px 0">
+              <span
+                style="
+                  background: rgba(255, 255, 255, 0.1);
+                  padding: 5px 10px;
+                  border-radius: 15px;
+                  margin: 5px;
+                  display: inline-block;
+                "
+                >Google</span
+              >
+              <span
+                style="
+                  background: rgba(255, 255, 255, 0.1);
+                  padding: 5px 10px;
+                  border-radius: 15px;
+                  margin: 5px;
+                  display: inline-block;
+                "
+                >Amazon</span
+              >
+              <span
+                style="
+                  background: rgba(255, 255, 255, 0.1);
+                  padding: 5px 10px;
+                  border-radius: 15px;
+                  margin: 5px;
+                  display: inline-block;
+                "
+                >Microsoft</span
+              >
+              <span
+                style="
+                  background: rgba(255, 255, 255, 0.1);
+                  padding: 5px 10px;
+                  border-radius: 15px;
+                  margin: 5px;
+                  display: inline-block;
+                "
+                >Meta</span
+              >
+            </div>
+          </div>
+
+          <div class="striver-card">
+            <h3>Additional Resources</h3>
+            <div style="text-align: left">
+              <div style="margin: 15px 0">
+                <h4 style="color: #ffd700; margin-bottom: 10px">
+                  📺 Video Resources
+                </h4>
+                <ul style="list-style: none; padding: 0">
+                  <li>
+                    <a
+                      href="https://www.youtube.com/c/takeUforward"
+                      style="color: #fff; text-decoration: none"
+                      >• Take U Forward</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/c/BackToBackSWE"
+                      style="color: #fff; text-decoration: none"
+                      >• Back To Back SWE</a
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div style="margin: 15px 0">
+                <h4 style="color: #ffd700; margin-bottom: 10px">
+                  📝 Practice Sheets
+                </h4>
+                <ul style="list-style: none; padding: 0">
+                  <li>
+                    <a
+                      href="https://neetcode.io/"
+                      style="color: #fff; text-decoration: none"
+                      >• NeetCode 150</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.pepcoding.com/resources/"
+                      style="color: #fff; text-decoration: none"
+                      >• PepCoding Resources</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            
+          </div>
+        
+      </section>
+      <section id="contact" class="section">
+        <h2>Get in Touch</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+  <div class="contact-icon">📧</div>
+  <h3 style="color: white; margin-bottom: 20px">Send us a Message</h3>
+
+  <form id="contactForm" class="contact-form" novalidate>
+    <!-- honeypot to reduce spam -->
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+    <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name" />
+    <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email" />
+    <textarea name="message" rows="4" placeholder="Your Message" required aria-label="Your Message"></textarea>
+
+    <button type="submit" class="contact-btn">Send Message</button>
+    <div id="formStatus" role="status" aria-live="polite" style="margin-top:10px;font-weight:600;"></div>
+  </form>
+
+  <script>
+    (function () {
+      const FORM_URL = 'https://formspree.io/f/mjkaqdyp';
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        // simple client-side validation
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        // prevent double submits
+        submitBtn.disabled = true;
+        status.style.color = '';
+        status.textContent = 'Sending…';
+
+        const formData = new FormData(form);
+        try {
+          const res = await fetch(FORM_URL, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            status.style.color = 'green';
+            status.textContent = 'Thanks — message sent.';
+            form.reset(); // clear fields
+            // clear status after a short delay
+            setTimeout(() => { status.textContent = ''; }, 5000);
+          } else {
+            const data = await res.json().catch(() => ({}));
+            status.style.color = 'crimson';
+            status.textContent = data?.error || 'Send failed. Try again later.';
+          }
+        } catch (err) {
+          status.style.color = 'crimson';
+          status.textContent = 'Network error. Try again.';
+        } finally {
+          submitBtn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</div>
+
+          <div class="contact-card">
+            <div class="contact-icon">📱</div>
+            <h3 style="color: white; margin-bottom: 20px">Connect With Us</h3>
+            <p style="margin-bottom: 20px">
+              Have questions? <br>We'd love to hear from you!
+            </p>
+            <div style="margin: 25px 0">
+              <p><b>Location: Bangalore, India</p></b>
+              
+              <p><b>Email: contact.codegai@gmail.com</p></b>
+            </div>
+            <div class="social-links">
+              <a
+                href="https://www.youtube.com/channel/UCgjdIVjOxaW6Q1gSOz-c-YA"
+                target="_blank"
+                class="social-link"
+                title="YouTube"
+              >
+                <img
+                  src="https://img.icons8.com/color/48/000000/youtube-play.png"
+                  alt="YouTube"
+                  style="width: 24px; height: 24px"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/codegai_tech?igsh=cW5jdms1M3NtaDJ3"
+                target="_blank"
+                class="social-link"
+                title="Instagram"
+              >
+                <img
+                  src="https://img.icons8.com/color/48/000000/instagram-new.png"
+                  alt="Instagram"
+                  style="width: 24px; height: 24px"
+                />
+              </a>
+              <a
+                href="https://whatsapp.com/channel/0029VbAs8bRFi8xkeMmclY3F"
+                target="_blank"
+                class="social-link"
+                title="WhatsApp Channel"
+              >
+                <img
+                  src="https://img.icons8.com/color/48/000000/whatsapp.png"
+                  alt="WhatsApp"
+                  style="width: 24px; height: 24px"
+                />
+              </a>
+              <a
+                href="https://t.me/code_gai"
+                target="_blank"
+                class="social-link"
+                title="Telegram Channel"
+              >
+                <img
+                  src="https://img.icons8.com/color/48/000000/telegram-app.png"
+                  alt="Telegram"
+                  style="width: 24px; height: 24px"
+                />
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">⏰</div>
+            <h3 style="color: white; margin-bottom: 20px">Response Time</h3>
+            <p style="margin-bottom: 15px">We typically respond within:</p>
+            <div style="text-align: left; margin: 20px 0">
+              <p>✓ Emails: 24-48 hours</p>
+              <p>✓ Social Media: 12-24 hours</p>
+              <p>✓ Phone Calls: Mon-Fri, 9AM-6PM</p>
+            </div>
+            <button class="contact-btn" onclick="window.open('https://calendly.com/gsumanthreddy/30min', '_blank')">
+              Schedule a Call
+            </button>
+
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 By CodeGAi | All Rights Reserved</p>
+    </footer>
+  </body>
+</html>
